@@ -25,6 +25,9 @@ module.exports = Object.assign || function(obj/*, objects*/) {
 
 function assign(a, b) {
   for (var key in b) {
+    if (['__proto__', 'constructor', 'prototype'].includes(key)) {
+      return;
+    }
     if (hasOwn(b, key)) {
       a[key] = b[key];
     }
